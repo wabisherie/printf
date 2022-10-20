@@ -1,40 +1,50 @@
 #include "main.h"
 
 /**
- * print_unsigned_int - print unsigned integer for 'u' conversion specifier
- * @modif: struct with modifier fields
- * @ap: va_list pointer with unsigned int to print
- *
- * Return: number of printed characters
+ * _strcpy - copy string to another
+ * @dest:dest
+ * @src:source
+ * Return: string
  */
-
-char *print_unsigned_int(modifier_t *modif, va_list ap)
+char *_strcpy(char *dest, char *src)
 {
-	unsigned int n;
-	int i = 0, j = 0;
-	char buffer[10], *res_str;
+	int i = 0;
 
-	if (!ap || !modif || modif->specifier != 'u')
+	while (src[i])
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+/**
+ * print_string - print a string
+ * @modif: struct with modifier fields
+ * @ap: va_list pointer with a string
+ *
+ * Return: return pointer to the beginning of string/index 
+ */
+char *print_string(modifier_t *modif, va_list ap)
+{
+	char *str;
+	char *res;
+
+	if (!ap || !modif)
+		return (0);
+	str = va_arg(ap, char *);
+	if (str == NULL)
+	{
+		res = malloc(sizeof(char) * 7);
+		res = _strcpy(res, "(null)");
+		return (res);
+	}
+	if (str[0] == '\0')
 		return (NULL);
-	n = va_arg(ap, unsigned int);
-	if (n == 0)
-	{
-		j = 1;
-		res_str = malloc(sizeof(char) * 2);
-		res_str[0] = '0';
-	}
-	else
-	{
-		while (n)
-		{
-			buffer[i++] = (n % 10) + '0';
-			n = n / 10;
-		}
-		res_str = malloc(sizeof(char) * i);
-		i--;
-		while (i >= 0)
-			res_str[j++] = buffer[i--];
-	}
-	res_str[j] = '\0';
-	return (res_str);
+	res = malloc(_strlen(str) + 1);
+	if (!res)
+		return (NULL);
+	res = _strcpy(res, str);
+
+	return (res);
 }
