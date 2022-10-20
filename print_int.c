@@ -1,10 +1,11 @@
 #include "main.h"
 
 /**
-  *treat_flags - treat flags + and ' 
+  *treat_flags - treat flags + and '
   *@flags: flags string
   *@flags: flags string
   *@size: size of buffer
+  *@buffer: temp location
   */
 
 void treat_flags(char *flags, char *buffer, int *size)
