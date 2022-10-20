@@ -2,17 +2,15 @@
 #include <stdio.h>
 
 /**
- * get_print_func- gets the apropriate printing function
+ * get_print_func - gets the apropriate printing function
  * for a given format-specifier
  * @c: format-specifier
  *
  * Return: pointer to a function or NULL if not found
  */
-
 char *(*get_print_func(char c))(modifier_t *, va_list)
 {
 	int i;
-
 	t_print t[] = {
 	    {'c', print_char},
 	    {'s', print_string},
@@ -26,9 +24,8 @@ char *(*get_print_func(char c))(modifier_t *, va_list)
 	    {'S', print_big_s},
 	    {'p', print_pointer},
 	    {'r', print_rev},
-	    {'R', print_rot},
+	     {'R', print_rot},
 	    {'\0', NULL}};
-
 	for (i = 0; t[i].f; i++)
 	{
 		if (t[i].f == c)
@@ -46,7 +43,6 @@ char *(*get_print_func(char c))(modifier_t *, va_list)
  *
  * Return: result string formated
  */
-
 char *treat_format(const char *format, unsigned int *pos, va_list ap)
 {
 	char *(*fun_p)(modifier_t *, va_list);
@@ -57,7 +53,6 @@ char *treat_format(const char *format, unsigned int *pos, va_list ap)
 	if (!format || !format[(*pos) + 1])
 	{
 		(*pos)++;
-
 		return (NULL);
 	}
 	aux = malloc(sizeof(char) * 2);
@@ -66,7 +61,6 @@ char *treat_format(const char *format, unsigned int *pos, va_list ap)
 	if (format[(*pos) + 1] == '%')
 	{
 		(*pos) += 2;
-
 		return (aux);
 	}
 	end_pos = *pos;
@@ -74,7 +68,6 @@ char *treat_format(const char *format, unsigned int *pos, va_list ap)
 	if (modif == NULL)
 	{
 		(*pos)++;
-
 		return (aux);
 	}
 	fun_p = get_print_func(modif->specifier);
