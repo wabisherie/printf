@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /**
- * get_print_func - gets the apropriate printing function
+ * get_print_func- gets the apropriate printing function
  * for a given format-specifier
  * @c: format-specifier
  *

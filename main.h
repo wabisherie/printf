@@ -54,6 +54,7 @@ void array_rev(char *arr, int len);
 int int_len(int num);
 char *ito(int n);
 char *reverse(char *s);
+char *(*get_print_func(char c))(modifier_t *, va_list);
 
 /**
  * struct print - multiple choice print
@@ -66,4 +67,4 @@ typedef struct print
 	char *(*func)(modifier_t *, va_list);
 } t_print;
 
-#endif
+#endif /*MAIN_H*/
