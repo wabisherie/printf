@@ -23,7 +23,7 @@ char *_strcpy(char *dest, char *src)
  * @modif: struct with modifier fields
  * @ap: va_list pointer with a string
  *
- * Return: return pointer to the beginning of string/index 
+ * Return: return pointer to the beginning of string/index
  */
 char *print_string(modifier_t *modif, va_list ap)
 {
